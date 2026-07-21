@@ -1,0 +1,76 @@
+{
+  "steps": [
+    {
+      "entity_type": "UNIVERSITY",
+      "language": "EN",
+      "risk_score": 0.6588487687279645,
+      "confidence": 0.616679103919049,
+      "risk_tier": "high",
+      "action": "FULL_REDACT",
+      "reward": 1.05
+    },
+    {
+      "entity_type": "NAME",
+      "language": "EN",
+      "risk_score": 0.23935169149367563,
+      "confidence": 0.6609878229261872,
+      "risk_tier": "low",
+      "action": "NO_REDACT",
+      "reward": 1.05
+    },
+    {
+      "entity_type": "ADDRESS",
+      "language": "EN",
+      "risk_score": 0.15495767372591093,
+      "confidence": 0.6818918734775539,
+      "risk_tier": "low",
+      "action": "NO_REDACT",
+      "reward": 1.05
+    },
+    {
+      "entity_type": "NAME",
+      "language": "EN",
+      "risk_score": 0.2730035915998343,
+      "confidence": 0.5304080362356446,
+      "risk_tier": "low",
+      "action": "NO_REDACT",
+      "reward": 1.05
+    },
+    {
+      "entity_type": "NAME",
+      "language": "EN",
+      "risk_score": 0.08943908961759688,
+      "confidence": 0.46290668774048765,
+      "risk_tier": "low",
+      "action": "NO_REDACT",
+      "reward": 1.05
+    },
+    {
+      "entity_type": "NAME",
+      "language": "EN",
+      "risk_score": 0.5419899879930137,
+      "confidence": 0.5250755602815602,
+      "risk_tier": "mid",
+      "action": "PARTIAL_MASK",
+      "reward": 0.8500000000000001
+    },
+    {
+      "entity_type": "PHONE",
+      "language": "EN",
+      "risk_score": 0.1610327150408913,
+      "confidence": 0.5954912169971754,
+      "risk_tier": "low",
+      "action": "NO_REDACT",
+      "reward": 1.05
+    },
+    {
+      "entity_type": "UNIVERSITY",
+      "language": "EN",
+      "risk_score": 0.4345518663383176,
+      "confidence": 0.5536580012171914,
+      "risk_tier": "mid",
+      "action": "PARTIAL_MASK",
+      "reward": 1.85
+    }
+  ]
+}
