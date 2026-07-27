@@ -2,13 +2,16 @@ import json
 
 RISK_COLORS = {"low": "#2e7d32", "mid": "#e6a817", "high": "#c62828"}
 
-# (border color override, background color override, label override) per
-# action. None means fall back to the risk-tier color / default background.
+# (border color override, background color override, label override, text
+# color) per action. None for border/background means fall back to the
+# risk-tier color / default background. Text color is set explicitly per
+# action rather than left to inherit, since FULL_REDACT's near-black
+# background needs light text while everything else needs dark text.
 ACTION_STYLES = {
-    "FULL_REDACT": ("#111", "#111", "[REDACTED]"),
-    "PARTIAL_MASK": ("#666", "#eee", None),
-    "SUBSTITUTE": ("#3949ab", "#e8eaf6", "[PLACEHOLDER]"),
-    "NO_REDACT": (None, None, None),
+    "FULL_REDACT": ("#111", "#111", "[REDACTED]", "#f2f2f2"),
+    "PARTIAL_MASK": ("#666", "#eee", None, "#222"),
+    "SUBSTITUTE": ("#3949ab", "#e8eaf6", "[PLACEHOLDER]", "#1a1a2e"),
+    "NO_REDACT": (None, None, None, "#222"),
 }
 
 
@@ -25,17 +28,17 @@ def render_episode_html(episode_trace):
             risk_exposed += step["risk_score"] * 0.4
             utility_kept += 0.5
 
-        border, bg, label_override = ACTION_STYLES[step["action"]]
+        border, bg, label_override, text_color = ACTION_STYLES[step["action"]]
         border = border or RISK_COLORS[step["risk_tier"]]
         bg = bg or "#fafafa"
         label = label_override or step["entity_type"]
 
         chips.append(f'''
         <div style="display:inline-block;margin:4px;padding:8px 12px;
-                    border:2px solid {border};border-radius:8px;background:{bg};
+                    border:2px solid {border};border-radius:8px;background:{bg};color:{text_color};
                     font-family:monospace;font-size:12px;min-width:110px;text-align:center;">
           <div style="font-weight:bold;">{label}</div>
-          <div style="color:#555;">{step["entity_type"]} ({step["language"]})</div>
+          <div style="opacity:0.75;">{step["entity_type"]} ({step["language"]})</div>
           <div style="color:{RISK_COLORS[step["risk_tier"]]};">risk {step["risk_score"]:.2f}, conf {step["confidence"]:.2f}</div>
           <div>{step["action"]}</div>
         </div>''')
