@@ -1,3 +1,4 @@
+import html
 import json
 
 RISK_COLORS = {"low": "#2e7d32", "mid": "#e6a817", "high": "#c62828"}
@@ -33,12 +34,22 @@ def render_episode_html(episode_trace):
         bg = bg or "#fafafa"
         label = label_override or step["entity_type"]
 
+        # Only present for entities extracted from real text (see
+        # environment/adapter.py) - synthetic episodes have no underlying
+        # text, so there's nothing to show here for those.
+        surface_text = step.get("surface_text")
+        surface_line = (
+            f'<div style="font-style:italic;">&quot;{html.escape(surface_text)}&quot;</div>'
+            if surface_text else ""
+        )
+
         chips.append(f'''
         <div style="display:inline-block;margin:4px;padding:8px 12px;
                     border:2px solid {border};border-radius:8px;background:{bg};color:{text_color};
                     font-family:monospace;font-size:12px;min-width:110px;text-align:center;">
           <div style="font-weight:bold;">{label}</div>
           <div style="opacity:0.75;">{step["entity_type"]} ({step["language"]})</div>
+          {surface_line}
           <div style="color:{RISK_COLORS[step["risk_tier"]]};">risk {step["risk_score"]:.2f}, conf {step["confidence"]:.2f}</div>
           <div>{step["action"]}</div>
         </div>''')
