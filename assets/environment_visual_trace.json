@@ -1,0 +1,52 @@
+[
+  {
+    "entity_type": "NAME",
+    "language": "FR",
+    "risk_score": 0.6440248303393514,
+    "confidence": 0.6,
+    "risk_tier": "mid",
+    "action": "SUBSTITUTE",
+    "reward": 0.25,
+    "surface_text": "Marie Ngo Bella"
+  },
+  {
+    "entity_type": "ADDRESS",
+    "language": "FR",
+    "risk_score": 0.8430580131973656,
+    "confidence": 0.65,
+    "risk_tier": "high",
+    "action": "FULL_REDACT",
+    "reward": 1.05,
+    "surface_text": "quartier Bastos"
+  },
+  {
+    "entity_type": "UNIVERSITY",
+    "language": "FR",
+    "risk_score": 0.31838836134906545,
+    "confidence": 0.7,
+    "risk_tier": "mid",
+    "action": "NO_REDACT",
+    "reward": -0.45,
+    "surface_text": "Université de Yaoundé I"
+  },
+  {
+    "entity_type": "PHONE",
+    "language": "FR",
+    "risk_score": 0.16424568367655326,
+    "confidence": 0.9,
+    "risk_tier": "low",
+    "action": "NO_REDACT",
+    "reward": 1.05,
+    "surface_text": "677123456"
+  },
+  {
+    "entity_type": "EMAIL",
+    "language": "FR",
+    "risk_score": 0.07019024292655811,
+    "confidence": 0.95,
+    "risk_tier": "low",
+    "action": "NO_REDACT",
+    "reward": 2.05,
+    "surface_text": "marie.ngobella@example.cm"
+  }
+]
