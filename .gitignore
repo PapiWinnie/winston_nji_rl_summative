@@ -1,5 +1,6 @@
 .venv/
 __pycache__/
 *.pyc
+.pytest_cache/
 assets/live_render.html
 colab_experiment_prompt.md
